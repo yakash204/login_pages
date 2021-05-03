@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <title>Login</title>
+</head>
+<body>
+    <div class="container">
+        <br>
+        <h2 style="text-align: center; text-transform: uppercase;">Login</h2>
+        <form action="submit.html">
+            <div class="form-group">
+                <label for="username">Username:</label>
+                <input type="text" class="form-control" id="username" placeholder="enter username" name="username" autocomplete="off">
+                <div id="error"></div>
+            </div>
+            <div class="form-group">
+                <label for="password">Password:</label>
+                <input type="password" class="form-control" id="pwd" placeholder="enter password" name="pwd">
+                <div id="pwd-error"></div>
+            </div>
+            <div class="checkbox">
+                <label><input type="checkbox" name="remeber">Remember me</label>
+            </div>
+            <button type="submit" class="btn btn-primary btn-block" id="submit">Submit</button>
+            <br>
+            <div class="mt-4 text-center">
+                Don't have an account? <a href="register.html">Create One</a>
+            </div>
+        </form>
+    </div>
+    <script>
+        $(document).ready(function(){
+            $('#submit').click(function(){
+                var username = $('#username').val();
+                var pwd = $('#pwd').val();
+                if(username == "" && pwd == "" ){
+                    $('#error').html('*This field is required.');
+                    $('#error').css('color','red');
+                    $('#pwd-error').html('*This field is required.');
+                    $('#pwd-error').css('color','red');
+                    return false;
+                }
+                if((username.length <= 2) || (username.length >= 15) ){
+                    $('#error').html('*length of usename must be between 3 and 14');
+                    $('#error').css('color','red');
+                    return false;
+                }
+                if(pwd.length < 8){
+                    $('#pwd-error').html('*password should be greater than 7.');
+                    $('#pwd-error').css('color','red');
+                    return false;
+                }
+            })
+        })
+
+    </script>
+
+</body>
+</html>
